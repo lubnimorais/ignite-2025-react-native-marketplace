@@ -1,6 +1,6 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from 'react-native';
 
-import { router } from "expo-router";
+import { router } from 'expo-router';
 
 export default function LoginScreen() {
   return (
@@ -11,5 +11,5 @@ export default function LoginScreen() {
         <Text>Registrar</Text>
       </TouchableOpacity>
     </View>
-  )
+  );
 }

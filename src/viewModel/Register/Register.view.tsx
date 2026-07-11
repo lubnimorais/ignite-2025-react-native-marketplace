@@ -1,20 +1,21 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from 'react-native';
 
-import { userRegisterViewModel } from "./userRegister.viewModel";
+import { useUserRegisterViewModel } from './userRegister.viewModel';
+import { Input } from '../../shared/components/Input';
 
 /**
- * Essa tipagem quer dizer que o RegisterView vai receber todos 
+ * Essa tipagem quer dizer que o RegisterView vai receber todos
  * os parâmentos que o custom hook userRegisterViewModel
  *   está retornado
  */
-export function RegisterView({ onSubmit}: ReturnType<typeof userRegisterViewModel>) {
+export function RegisterView({ onSubmit }: ReturnType<typeof useUserRegisterViewModel>) {
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text>Register</Text>
+    <View className="flex-1 justify-center">
+      <Input />
 
       <TouchableOpacity onPress={onSubmit}>
         <Text>Registrar</Text>
       </TouchableOpacity>
     </View>
-  )
+  );
 }

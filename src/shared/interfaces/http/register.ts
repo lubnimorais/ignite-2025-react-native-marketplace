@@ -1,4 +1,4 @@
-import { IUser } from "../user";
+import { IUser } from '../user';
 
 export type IRegisterHttpParams = {
   name: string;
@@ -6,10 +6,10 @@ export type IRegisterHttpParams = {
   avatarUrl?: string;
   phone: string;
   password: string;
-}
+};
 
 export type IRegisterHttpResponse = {
   token: string;
   refreshToken: string;
   user: IUser;
-}
+};
