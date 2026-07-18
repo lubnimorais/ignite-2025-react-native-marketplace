@@ -12,7 +12,10 @@ export const inputVariants = tv({
   // estilização para cada estado do input
   variants: {
     isFocused: {
-      true: {},
+      true: {
+        wrapper: 'border-purple-base',
+        label: 'text-purple-base',
+      },
     },
     isError: {
       true: {},
