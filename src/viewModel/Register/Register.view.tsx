@@ -1,26 +1,32 @@
+import { useState } from 'react';
+
 import { Text, TouchableOpacity, View } from 'react-native';
 
-import { useUserRegisterViewModel } from './userRegister.viewModel';
-import { Input } from '../../shared/components/Input';
-import { useState } from 'react';
+import { useRegisterViewModel } from './userRegister.viewModel';
+
+import { InputController } from '../../shared/components/InputController';
 
 /**
  * Essa tipagem quer dizer que o RegisterView vai receber todos
  * os parâmentos que o custom hook userRegisterViewModel
  *   está retornado
  */
-export function RegisterView({ onSubmit }: ReturnType<typeof useUserRegisterViewModel>) {
+export function RegisterView({
+  control,
+  errors,
+  onSubmit,
+}: ReturnType<typeof useRegisterViewModel>) {
   const [email, setEmail] = useState('');
 
   return (
     <View className="flex-1 justify-center">
-      <Input
-        label="E-mail"
-        leftIcon="person"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
+      <InputController
+        leftIcon="mail-outline"
+        label="E-MAIL"
+        control={control}
+        name="email"
+        errors={errors}
       />
-      <Input label="Senha" leftIcon="lock-closed-outline" />
 
       <TouchableOpacity onPress={onSubmit}>
         <Text>Registrar</Text>

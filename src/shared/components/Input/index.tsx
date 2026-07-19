@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { IInputVariantsProps, inputVariants } from './input.variants';
 import { useInputViewModel } from './useInputViewModel';
 
-type IInputProps = TextInputProps &
+export type IInputProps = TextInputProps &
   IInputVariantsProps & {
     label?: string;
     leftIcon?: keyof typeof Ionicons.glyphMap;
@@ -18,13 +18,14 @@ type IInputProps = TextInputProps &
 export function Input({
   label,
   value,
+  isDisabled,
   leftIcon,
   rightIcon,
   className,
   containerClassName,
   isError,
   error,
-  secureTextEntry = true,
+  secureTextEntry = false,
   mask,
   onChangeText,
   onFocus,
@@ -34,6 +35,7 @@ export function Input({
   const {
     isFocused,
     getIconColor,
+    showPassword,
     handleWrapperPress,
     handlePasswordToggle,
     handleFocus,
@@ -43,7 +45,7 @@ export function Input({
     value,
     isError: !!error,
     secureTextEntry,
-    error,
+    isDisabled,
     mask,
     onChangeText,
     onFocus,
@@ -52,6 +54,8 @@ export function Input({
 
   const styles = inputVariants({
     isFocused,
+    isDisabled,
+    isError: !!error,
   });
 
   return (
@@ -63,6 +67,7 @@ export function Input({
 
         <TextInput
           className={styles.input({ className })}
+          secureTextEntry={showPassword}
           onBlur={handleBlur}
           onFocus={handleFocus}
           value={value}
@@ -70,10 +75,18 @@ export function Input({
           {...rest}
         />
 
-        <TouchableOpacity>
-          <Ionicons name="eye-off-outline" size={22} />
-        </TouchableOpacity>
+        {showPassword && (
+          <TouchableOpacity activeOpacity={0.7} onPress={handlePasswordToggle}>
+            <Ionicons name={showPassword ? 'eye-outline' : 'eye-off-outline'} size={22} />
+          </TouchableOpacity>
+        )}
       </Pressable>
+
+      {error && (
+        <Text className={styles.error()}>
+          <Ionicons name="alert-circle-outline" /> {error}
+        </Text>
+      )}
     </View>
   );
 }

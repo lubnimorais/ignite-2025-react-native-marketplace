@@ -6,7 +6,7 @@ import { IRegisterFormData, registerSchema } from './register.schema';
 import { useRegisterMutation } from '../../shared/queries/auth/user-register.mutation';
 import { useUserStore } from '../../shared/store/user-store';
 
-export function useUserRegisterViewModel() {
+export function useRegisterViewModel() {
   const userRegisterMutation = useRegisterMutation();
   const { setSession } = useUserStore();
 

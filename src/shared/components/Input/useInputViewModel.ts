@@ -6,7 +6,6 @@ import { colors } from '../../../styles/colors';
 
 type IInputViewModelProps = {
   value?: string;
-  error?: string;
   secureTextEntry?: boolean;
   isError?: boolean;
   isDisabled?: boolean;
@@ -18,7 +17,6 @@ type IInputViewModelProps = {
 
 export function useInputViewModel({
   value,
-  error,
   secureTextEntry,
   isError,
   isDisabled,
@@ -27,7 +25,7 @@ export function useInputViewModel({
   mask,
   onChangeText,
 }: IInputViewModelProps) {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(secureTextEntry);
   const [isFocused, setIsFocused] = useState(false);
 
   const inputRef = useRef<TextInput>(null);
@@ -53,9 +51,9 @@ export function useInputViewModel({
   }
 
   function getIconColor() {
-    if (isFocused) return colors['purple-base'];
-
     if (isError) return colors.danger;
+
+    if (isFocused) return colors['purple-base'];
 
     if (value) return colors['purple-base'];
 
@@ -72,6 +70,7 @@ export function useInputViewModel({
 
   return {
     isFocused,
+    showPassword,
     handleWrapperPress,
     handleFocus,
     handleBlur,
