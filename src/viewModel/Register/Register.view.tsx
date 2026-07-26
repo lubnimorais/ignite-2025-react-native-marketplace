@@ -7,6 +7,7 @@ import { useRegisterViewModel } from './userRegister.viewModel';
 import { InputController } from '../../shared/components/InputController';
 import { AuthFormHeader } from '../../shared/components/AuthFormHeader';
 import { KeyboardContainer } from '../../shared/components/KeyboardContainer';
+import { Button } from '../../shared/components/Button';
 
 /**
  * Essa tipagem quer dizer que o RegisterView vai receber todos
@@ -27,36 +28,42 @@ export function RegisterView({
         />
 
         <InputController
-          leftIcon="person-outline"
-          label="NOME"
           control={control}
           name="name"
+          leftIcon="person-outline"
+          label="NOME"
+          placeholder="Seu nome completo"
           errors={errors}
         />
 
         <InputController
-          leftIcon="mail-outline"
-          label="E-MAIL"
-          control={control}
-          name="email"
-          errors={errors}
-        />
-
-        <InputController
-          leftIcon="call-outline"
-          label="TELEFONE"
           control={control}
           name="phone"
+          leftIcon="call-outline"
+          label="TELEFONE"
+          placeholder="(00) 00000-0000"
+          errors={errors}
+        />
+
+        <Text className="text-base font-bold text-gray-500 mt-6">Acesso</Text>
+
+        <InputController
+          control={control}
+          name="email"
+          leftIcon="mail-outline"
+          label="E-MAIL"
+          placeholder="mail@example.com.br"
           errors={errors}
         />
 
         <InputController
-          leftIcon="lock-closed-outline"
-          label="SENHA"
           control={control}
           name="password"
+          leftIcon="lock-closed-outline"
+          label="SENHA"
           errors={errors}
           secureTextEntry
+          placeholder="sua senha"
         />
 
         <InputController
@@ -66,15 +73,16 @@ export function RegisterView({
           name="confirmPassword"
           errors={errors}
           secureTextEntry
+          placeholder="confirme sua senha"
         />
 
-        <TouchableOpacity onPress={onSubmit}>
-          <Text>Registrar</Text>
-        </TouchableOpacity>
+        <Button className="mt-6" title="Registrar" onPress={onSubmit} />
 
-        <TouchableOpacity onPress={() => router.push('/login')}>
-          <Text>Login</Text>
-        </TouchableOpacity>
+        <View className="mt-16">
+          <Text className="text-base text-gray-300 mb-6">Já tem uma conta?</Text>
+
+          <Button title="Login" variant="outlined" onPress={() => router.push('/login')} />
+        </View>
       </View>
     </KeyboardContainer>
   );
