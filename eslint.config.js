@@ -18,6 +18,8 @@ export default [
     },
     rules: {
       'prettier/prettier': 'error',
+      // Desativa o conflito de chaves/objetos gerado pelo Expo
+      'object-curly-spacing': 'off',
     },
   },
   configPrettier,

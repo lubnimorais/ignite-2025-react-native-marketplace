@@ -2,12 +2,13 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import { router } from 'expo-router';
 
-import { useRegisterViewModel } from './userRegister.viewModel';
+import { useRegisterViewModel } from './useRegister.viewModel';
 
 import { InputController } from '../../shared/components/InputController';
 import { AuthFormHeader } from '../../shared/components/AuthFormHeader';
 import { KeyboardContainer } from '../../shared/components/KeyboardContainer';
 import { Button } from '../../shared/components/Button';
+import { Ionicons } from '@expo/vector-icons';
 
 /**
  * Essa tipagem quer dizer que o RegisterView vai receber todos
@@ -17,6 +18,7 @@ import { Button } from '../../shared/components/Button';
 export function RegisterView({
   control,
   errors,
+  handleSelectAvatar,
   onSubmit,
 }: ReturnType<typeof useRegisterViewModel>) {
   return (
@@ -26,6 +28,10 @@ export function RegisterView({
           title="Crie sua conta"
           subtitle="Informe os seus dados pessoais e de acesso"
         />
+
+        <TouchableOpacity activeOpacity={0.7} onPress={handleSelectAvatar}>
+          <Ionicons name="cloud-upload-outline" size={32} />
+        </TouchableOpacity>
 
         <InputController
           control={control}
@@ -79,9 +85,15 @@ export function RegisterView({
         <Button className="mt-6" title="Registrar" onPress={onSubmit} />
 
         <View className="mt-16">
-          <Text className="text-base text-gray-300 mb-6">Já tem uma conta?</Text>
+          <Text className="text-base text-gray-300 mb-6">
+            Já tem uma conta?
+          </Text>
 
-          <Button title="Login" variant="outlined" onPress={() => router.push('/login')} />
+          <Button
+            title="Login"
+            variant="outlined"
+            onPress={() => router.push('/login')}
+          />
         </View>
       </View>
     </KeyboardContainer>

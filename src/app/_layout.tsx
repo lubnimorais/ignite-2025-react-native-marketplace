@@ -5,6 +5,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../libs/query-client';
 
 import '../styles/global.css';
+import { Modal } from '../shared/components/Modal';
 
 export default function RootLayout() {
   return (
@@ -18,6 +19,8 @@ export default function RootLayout() {
         <Stack.Screen name="register" />
         <Stack.Screen name="(private)" />
       </Stack>
+
+      <Modal />
     </QueryClientProvider>
   );
 }
