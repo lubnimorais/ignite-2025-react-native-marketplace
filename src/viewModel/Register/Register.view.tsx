@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import { router } from 'expo-router';
 
@@ -18,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 export function RegisterView({
   control,
   errors,
+  avatarUri,
   handleSelectAvatar,
   onSubmit,
 }: ReturnType<typeof useRegisterViewModel>) {
@@ -29,8 +30,20 @@ export function RegisterView({
           subtitle="Informe os seus dados pessoais e de acesso"
         />
 
-        <TouchableOpacity activeOpacity={0.7} onPress={handleSelectAvatar}>
-          <Ionicons name="cloud-upload-outline" size={32} />
+        <TouchableOpacity
+          className="w-[120px] h-[120px] items-center justify-center self-center rounded-[12px] bg-shape mb-8"
+          activeOpacity={0.7}
+          onPress={handleSelectAvatar}
+        >
+          {avatarUri ? (
+            <Image
+              className="w-full h-full rounded-[12px]"
+              source={{ uri: avatarUri }}
+              resizeMode="cover"
+            />
+          ) : (
+            <Ionicons name="cloud-upload-outline" size={32} />
+          )}
         </TouchableOpacity>
 
         <InputController

@@ -6,11 +6,13 @@ import {
   SelectionModal,
 } from '../components/Modal/SelectionModal';
 
+export type ISelectionVariant = 'primary' | 'secondary' | 'danger';
+
 export type ISelectionOption = {
   text: string;
   onPress: () => void;
   icon?: keyof typeof Ionicons.glyphMap;
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: ISelectionVariant;
 };
 
 export function useModal() {

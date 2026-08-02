@@ -26,6 +26,8 @@ export type IUserStore = {
   setSession: (sessionData: ISetSessionParams) => void;
   logout: () => void;
   updateTokens: (updatedTokensData: IUpdateTokensParams) => void;
+  // PARTIL vai com que todas a propriedades se tornem opcionais
+  updateUser: (updatedUser: Partial<IUser>) => void;
 };
 
 // CONFIGURANDO O ZUSTAND
@@ -56,6 +58,11 @@ export const useUserStore = create<IUserStore>()(
           refreshToken: updatedTokensData.refreshToken,
         });
       },
+
+      updateUser: (updatedUser) =>
+        set((state) => ({
+          user: state.user ? { ...state.user, ...updatedUser } : null,
+        })),
     }),
     {
       name: '@marketplace:auth',

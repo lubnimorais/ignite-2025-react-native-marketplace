@@ -4,8 +4,11 @@ import { QueryClientProvider } from '@tanstack/react-query';
 
 import { queryClient } from '../libs/query-client';
 
-import '../styles/global.css';
+import ToastManager from 'toastify-react-native';
+
 import { Modal } from '../shared/components/Modal';
+
+import '../styles/global.css';
 
 export default function RootLayout() {
   return (
@@ -21,6 +24,8 @@ export default function RootLayout() {
       </Stack>
 
       <Modal />
+
+      <ToastManager useModal={false} />
     </QueryClientProvider>
   );
 }

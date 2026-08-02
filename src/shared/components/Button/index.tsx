@@ -1,10 +1,19 @@
-import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import {
+  ActivityIndicator,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 
 import { colors } from '../../../styles/colors';
 
-import { buttonVariants, ButtonVariantsEnum, IButtonVariantsProps } from './button.variantes';
+import {
+  buttonVariants,
+  ButtonVariantsEnum,
+  IButtonVariantsProps,
+} from './button.variantes';
 
 type IButtonProps = TouchableOpacityProps &
   IButtonVariantsProps & {
@@ -30,7 +39,10 @@ export function Button({
     variant,
   });
 
-  const contentColor = variant === ButtonVariantsEnum.FILLED ? colors.white : colors['purple-base'];
+  const contentColor =
+    variant === ButtonVariantsEnum.FILLED
+      ? colors.white
+      : colors['purple-base'];
 
   function renderContent() {
     if (isLoading) {
@@ -49,7 +61,11 @@ export function Button({
   }
 
   return (
-    <TouchableOpacity className={styles.base({ className })} activeOpacity={0.7} {...rest}>
+    <TouchableOpacity
+      className={styles.base({ className })}
+      activeOpacity={0.7}
+      {...rest}
+    >
       {renderContent()}
     </TouchableOpacity>
   );
