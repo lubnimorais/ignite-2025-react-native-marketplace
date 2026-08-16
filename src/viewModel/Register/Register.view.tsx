@@ -105,7 +105,7 @@ export function RegisterView({
           <Button
             title="Login"
             variant="outlined"
-            onPress={() => router.push('/login')}
+            onPress={() => router.push('/(public)/login')}
           />
         </View>
       </View>

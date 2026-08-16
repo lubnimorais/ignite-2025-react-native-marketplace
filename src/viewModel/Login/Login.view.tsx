@@ -9,7 +9,10 @@ import { InputController } from '../../shared/components/InputController';
 import { useLoginViewModel } from './useLogin.viewModel';
 import { Button } from '../../shared/components/Button';
 
-export function LoginView({ control, onSubmit }: ReturnType<typeof useLoginViewModel>) {
+export function LoginView({
+  control,
+  onSubmit,
+}: ReturnType<typeof useLoginViewModel>) {
   return (
     <KeyboardContainer>
       <View className="flex-1 items-center justify-center px-[40px]">
@@ -36,13 +39,24 @@ export function LoginView({ control, onSubmit }: ReturnType<typeof useLoginViewM
             placeholder="sua senha"
           />
 
-          <Button className="mt-6" title="Acessar" rightIcon="arrow-forward" onPress={onSubmit} />
+          <Button
+            className="mt-6"
+            title="Acessar"
+            rightIcon="arrow-forward"
+            onPress={onSubmit}
+          />
         </View>
 
         <View className="flex-2 pb-16">
-          <Text className="text-base text-gray-300 mb-6">Ainda não tem uma conta?</Text>
+          <Text className="text-base text-gray-300 mb-6">
+            Ainda não tem uma conta?
+          </Text>
 
-          <Button title="Registro" variant="outlined" onPress={() => router.push('/register')} />
+          <Button
+            title="Registro"
+            variant="outlined"
+            onPress={() => router.push('/(public)/register')}
+          />
         </View>
       </View>
     </KeyboardContainer>

@@ -9,8 +9,11 @@ import ToastManager from 'toastify-react-native';
 import { Modal } from '../shared/components/Modal';
 
 import '../styles/global.css';
+import { useUserStore } from '../shared/store/user-store';
 
 export default function RootLayout() {
+  const { token } = useUserStore();
+
   return (
     <QueryClientProvider client={queryClient}>
       <Stack
@@ -18,8 +21,7 @@ export default function RootLayout() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="login" />
-        <Stack.Screen name="register" />
+        <Stack.Screen name="(public)" />
         <Stack.Screen name="(private)" />
       </Stack>
 

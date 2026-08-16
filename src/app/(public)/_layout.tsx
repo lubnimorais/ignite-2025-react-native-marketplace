@@ -1,11 +1,12 @@
 import { Redirect, Stack } from 'expo-router';
+
 import { useUserStore } from '../../shared/store/user-store';
 
-export default function PrivateLayout() {
+export default function PublicLayout() {
   const { user, token } = useUserStore();
 
-  if (!user || !token) {
-    return <Redirect href="/(public)/login" />;
+  if (user && token) {
+    return <Redirect href="/(private)/home" />;
   }
 
   return (
@@ -13,8 +14,6 @@ export default function PrivateLayout() {
       screenOptions={{
         headerShown: false,
       }}
-    >
-      <Stack.Screen name="(tabs)" />
-    </Stack>
+    />
   );
 }
